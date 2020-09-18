@@ -58,6 +58,15 @@ var _=(function(){
          values[i]=obj[_keys[i]]
          return values;
     }
+
+    //Check if an object,String,Array is empty.
+    methods.isEmpty=function(obj){
+        if(obj==null)
+        return true;
+        if(typeof(obj)==="string")
+        return obj.length===0;
+        return _.getKeys(obj).length===0;
+    }
     
     //checks if the passed object is boolean.
     methods.isBoolean=function(obj){
@@ -68,7 +77,43 @@ var _=(function(){
     methods.isDom=function(obj){
         return (obj && obj.nodeType===1) ? true:false;
     }
+
+     //check if the object contains the properties
+     methods.containsAttr=function(obj={},attr=[]){
+        var _keys=_.getKeys(attr);
+        for(let i=0;i<_keys.length;i++){
+            if(obj.hasOwnProperty(_keys[i])) //Only takes object's properties and not it's prototype.
+            continue;
+            return false;
+        }
+        return true;
+    }
+    
+    //Reverse Key and values;
+    methods.reverseObject=function(obj){
+        var _keys=_.getKeys(obj);
+        var _values=_.getValues(obj);
+        var result={};
+        if(!_keys.length)
+        return obj;
+        for(let i=0;i<_keys.length;i++){
+            if(typeof(_values[i])==='function')
+            continue;
+            if(typeof(_values[i])==='object')
+            {
+                var StringifyObj=JSON.stringify(_values[i]);
+                result[StringifyObj]=_keys[i]
+                continue;
+            }
+            result[obj[_keys[i]]]=_keys[i];
+        }
+        return result;
+    }
+
     return methods;
     })()
 
+   
     module.exports=_;
+
+    
