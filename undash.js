@@ -110,6 +110,34 @@ var _=(function(){
         return result;
     }
 
+    //Find a random number between Min and Max.
+    methods.random=function(min=0,max){
+        if(max==null || max<min){
+        max=min;
+        }
+       return min+Math.floor(Math.random()*(max-min));
+    }
+
+    //Determines if an object or an array contains an element.
+    methods.contains=function(obj,val){
+        var _values=_.getValues(obj)
+        return _values.indexOf(val)>=0;
+    }
+
+    //takes an array and converts it into an array with unique values
+    methods.uniq=function(arr){
+        if(!Array.isArray(arr) || arr.length==0)
+        return [];
+        var result=[];
+        for(let i=0;i<arr.length;i++){
+            if(result.indexOf(arr[i])>=0)
+            continue;
+            result.push(arr[i])
+        }
+        return result;
+    }
+
+
     return methods;
     })()
 
