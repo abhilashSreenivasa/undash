@@ -137,11 +137,35 @@ var _=(function(){
         return result;
     }
 
+    //extend an object to another object's own property
+    /*override parameter is defaulted to false so that common properties are
+    not overridden.*/
+
+    methods.extend=function(obj1=null,obj2=null,override=false){
+        if(obj2===null)
+        return obj1;
+        if(obj1===null)
+        return obj2;
+        var _keys=_.getKeys(obj2);
+        var _values=_.getValues(obj2);
+        if(override){
+            for(var i=0;i<_keys.length;i++){
+                obj1[_keys[i]]=_values[i];
+            }
+        }
+        else{
+            for(var i=0;i<_keys.length;i++){
+                if(!obj1.hasOwnProperty(_keys[i]))
+                obj1[_keys[i]]=_values[i];
+            }
+
+        }
+        return obj1;
+    }
 
     return methods;
     })()
 
-   
     module.exports=_;
 
     
