@@ -88,6 +88,15 @@ var _=(function(){
         }
         return true;
     }
+
+    //call a function after certain amount of time( milliseconds) after passing an argument.
+  /*  methods.delayCall=async (func,time,args)=>{
+        
+        return await setTimeout(async ()=>{
+          
+            return await func.call(delayCall,args);
+        }, time);
+    }*/
     
     //Reverse Key and values;
     methods.reverseObject=function(obj){
@@ -162,6 +171,28 @@ var _=(function(){
         }
         return obj1;
     }
+
+    //Converts an object into a list of keys and values.
+    methods.pairs=function(obj){
+        var _keys=_.getKeys(obj);
+        var arr=[];
+        for(var i=0,length=_keys.length;i<length;i++){
+            arr.push('['+_keys[i]+','+obj[_keys[i]]+']')
+        }
+        return arr;
+    }
+
+     // Return a sorted list of the function names available on the object.
+     methods.functions=function(obj){
+        var _keys=_.getKeys(obj)
+        var arr=[];
+        for(var i=0,length=_keys.length;i<length;i++){
+            if(typeof(obj[_keys[i]])==='function')
+            arr.push(_keys[i])
+        }
+        return arr;
+     }
+
 
     return methods;
     })()
