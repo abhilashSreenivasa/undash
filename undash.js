@@ -171,7 +171,7 @@ var _=(function(){
         }
         return obj1;
     }
-
+     
     //Converts an object into a list of keys and values.
     methods.pairs=function(obj){
         var _keys=_.getKeys(obj);
@@ -192,6 +192,32 @@ var _=(function(){
         }
         return arr;
      }
+     
+    // returns the number of times given array contains a particular element;
+    // return -1 if the argument is invalid.(non-array,null,undefined)
+    methods.howMany=function(arr,ele){
+        if(!Array.isArray(arr))
+        return -1;
+        let count=0;
+        for(let i in arr){
+        if(arr[i]===ele)
+        ++count;
+        }
+        return count;
+    }
+
+    //Filter out all negative values in an array.
+    methods.bePositive=function(arr){
+        if(!Array.isArray(arr))
+        return -1;
+        var a=[]
+        for(let i=0,length=arr.length;i<length;i++)
+        {
+            if(_.isNum(arr[i]) && arr[i]>0)
+            a.push(arr[i])
+        }
+        return a;
+    }
 
 
     return methods;
