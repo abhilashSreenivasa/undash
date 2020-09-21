@@ -219,6 +219,32 @@ var _=(function(){
         return a;
     }
 
+    //remove every element that is mentioned.
+    methods.without=function(arr=[],...values){
+       var a=[],res=[]
+       if(!Array.isArray(arr) || arr===null || arr===undefined)
+       return a;
+       a=values;
+       for(let i=0;i<arr.length;i++){
+         if(a.indexOf(arr[i])>=0)
+            continue;
+         res.push(arr[i])
+       }
+       return res;
+   }
+   //remove every element of the array that is not mentioned.
+   methods.intersection=function(arr=[],...values){
+    var a=[],res=[]
+    if(!Array.isArray(arr) || arr===null || arr===undefined)
+    return a;
+    a=values;
+    for(let i=0;i<arr.length;i++){
+      if(a.indexOf(arr[i])>=0)
+        res.push(arr[i]);
+    }
+    return res;
+}
+
 
     return methods;
     })()
