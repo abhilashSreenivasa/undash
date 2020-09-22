@@ -232,7 +232,7 @@ var _=(function(){
        }
        return res;
    }
-   //remove every element of the array that is not mentioned.
+   //returns array with .
    methods.intersection=function(arr=[],...values){
     var a=[],res=[]
     if(!Array.isArray(arr) || arr===null || arr===undefined)
@@ -244,7 +244,52 @@ var _=(function(){
     }
     return res;
 }
+    
+  //Call a method n times.
+  methods.times=function(func,times=1,args){
+      if(func===null || func===undefined || typeof(func)!=='function')
+      return -1;
+      var arr=[];
+     for(var i=0;i<times;i++){
+         arr.push(func.apply(null,args));
+     }
+     return arr;
+    }
+   
+   //Search based on a particular key
+   methods.linearSearch=function(arr,val){
+       if(val===null || val===undefined || typeof(val)!='number')
+       return -1;
+       var _keys=_.getKeys(arr)
+       
+       for(var i=0,length=0;i<arr.length;i++){
+            if(arr[_keys[i]]===val)
+            return _keys[i];
+       }
+       return -1;
+   }
 
+   //Binary Search: time complexity:o(logn)
+   methods.binarySearch=function(arr,val){
+        var _keys=_.getKeys(arr)
+        if(val===null || val===undefined || typeof(val)!='number' || !_keys.length)
+         return -1;
+        var min=0;
+        var max=arr.length-1;
+        var mid=-1;
+        while(min<=max){
+            mid=Math.floor(min+(max-min)/2);
+            if(val==arr[mid])
+            return mid;
+            else if(val<arr[mid])
+            max=mid-1;
+            else
+            min=mid+1;
+        }
+        return mid;
+   }
+
+   // 
 
     return methods;
     })()
