@@ -254,7 +254,7 @@ var _=(function(){
          arr.push(func.apply(null,args));
      }
      return arr;
-    }
+  }
    
    //Search based on a particular key
    methods.linearSearch=function(arr,val){
@@ -289,11 +289,36 @@ var _=(function(){
         return mid;
    }
 
-   // 
+   //get values of particular keys.
+   methods.pluck=function(obj,model){
+       var _arr=_.getValues(obj)
+       var _res=[];
+       for(var i=0;i<_arr.length;i++){
+          if(_arr[i].hasOwnProperty(model))
+          _res.push(_arr[i][model])
+       }
+       return _res;
+   }
+  
+   //is it a Json object?.
+   methods.isJSON=function(obj){
+       try{
+           var jsonObj=JSON.parse(obj)
+           console.log(jsonObj)
+           if(!jsonObj || !typeof(jsonObj)==='object')
+           return false;
+       }
+       catch(e){
+           return false;
+       }
+       return true;
+   }
 
+
+   
     return methods;
     })()
 
-    module.exports=_;
+   exports._=_;
 
     
