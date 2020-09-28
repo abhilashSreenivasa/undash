@@ -90,12 +90,12 @@ var _=(function(){
     }
 
     //call a function after certain amount of time( milliseconds) after passing an argument.
-  /*  methods.delayCall=async (func,time,args)=>{
-        
-        return await setTimeout(async ()=>{
-          
-            return await func.call(delayCall,args);
+  /* methods.delayCall=async(callback,time,...args)=>{
+       callback(null,args)
+        return setTimeout( async ()=>{
+            return callback.apply(null,args);
         }, time);
+      
     }*/
     
     //Reverse Key and values;
@@ -314,10 +314,30 @@ var _=(function(){
        return true;
    }
 
+   //Check if the property belongs to the prototype of the object.
+   methods.isProtoProp=function(obj,key){
+       if(obj===undefined || obj===null || key===undefined || typeof(obj)!='object')
+       return false;
+       if(obj[key]){
+        if(obj.hasOwnProperty(key))
+            return false;
+        return true;
+       }
+       return false;
+    }
 
-   
+   //get a random value in the array.
+   methods.randomArr=function(arr){
+       if(!Array.isArray(arr) || !arr.length){
+        return;
+       }
+       const index=_.random(0,arr.length-1)
+       return arr[index];
+   }
     return methods;
     })()
+
+    
 
    exports._=_;
 
