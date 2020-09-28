@@ -334,6 +334,24 @@ var _=(function(){
        const index=_.random(0,arr.length-1)
        return arr[index];
    }
+
+   //Call the function only after certain number of calls.
+   methods.after=function(times=0,func=()=>{},...args){
+       return function(){
+           if(--times<0)
+           return func.apply(null,...args)
+       }
+   }
+
+   //Limit the maximum number of calls that can be made to a function.
+   methods.before=function(times=0,func=()=>{},...args){
+       return function(){
+           if(--times>=0)
+           return func.apply(null,...args)
+       }
+   }
+
+
     return methods;
     })()
 
