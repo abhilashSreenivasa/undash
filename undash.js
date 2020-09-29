@@ -351,6 +351,50 @@ var _=(function(){
        }
    }
 
+   //Capitalize the first letter of the String.
+   methods.capitalize=function(str){
+       if(typeof(str)!=='string')
+       return str;
+       return str.charAt(0).toUpperCase()+str.substring(1);
+   }
+
+   //Split the string in line breaks and return a list.
+   methods.splitLines=function(str){
+        if(typeof(str)!=='string')
+         return;
+        var arr=str.split("\n")
+        return arr;
+   }
+
+   //Capitalize Every first word of the sentence and trim spaces.
+   methods.prettyString=function(str){
+    if(typeof(str)!=='string')
+        return;
+    let arr=str.split(".")
+    let result="";
+    for(let i=0;i<arr.length;i++){
+        arr[i]=_.capitalize(arr[i].trim());
+        result+=(i==0) ?arr[i]+".":" "+arr[i]+".";
+    }
+    return result;
+   }
+
+   //Check if the string is a palindrome.
+   methods.isPalindrome=function(str){
+    if(typeof(str)!=='string')
+    return;
+    let j=str.length;
+    for(let i=0;i<str.length;i++){
+        --j;
+        if(i>j)
+        break;
+        if(str[i]===str[j])
+         continue;
+        return false;
+    }
+    return true;
+   }
+
 
     return methods;
     })()
