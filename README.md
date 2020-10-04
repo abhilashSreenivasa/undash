@@ -1,1 +1,1 @@
-# Undash is a Javascript utility library having several inbuilt methods to make life easier for JS developers!(Inspired by- Undescorejs, lodash)
+# Undash is a Javascript utility library having several in-built methods to make life easier for JS developers!(Inspired by- Underscorejs, lodash)

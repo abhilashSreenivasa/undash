@@ -395,6 +395,36 @@ var _=(function(){
     return true;
    }
 
+   //Return size of any collection.
+   methods.size=function(obj){
+       return _.getKeys(obj).length;
+   }
+
+   //Difference between the first and the second array.
+   methods.difference=function(arr1,arr2){
+       if(!Array.isArray(arr1) || !Array.isArray(arr2))
+       return;
+       var arr=[];
+       for(let i=0,length=arr1.length;i<length;i++){
+           if(!arr2.includes(arr1[i]))
+            arr.push(arr1[i])
+       }
+       return arr;
+   }
+
+   //delete a key with a certain value.
+   methods.deleteKey=function(obj,val){
+       if(!_.isObject(obj))
+       return;
+       var _keys=_.getKeys(obj);
+       for(let i=0,length=_keys.length;i<length;i++){
+           if(obj[_keys[i]]===val)
+            delete obj[_keys[i]]
+       }
+       return obj;
+   }
+
+
 
     return methods;
     })()
