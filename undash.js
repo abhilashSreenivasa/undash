@@ -424,6 +424,52 @@ var _=(function(){
        return obj;
    }
 
+   //Slice the first n elements of the array.
+   methods.drop=function(arr=[],num=0){
+       if(!Array.isArray(arr) || !_.isNum(num))
+       return;
+
+       var res=[];
+       if(num>=0){
+           if(num>arr.length)
+           return res;
+           for(let i=num;i<arr.length;i++)
+                res.push(arr[i])
+           return res;
+       }
+
+       if(Math.abs(num)>arr.length)
+       return res;
+
+       for(let i=0;i<arr.length+num;i++)
+         res.push(arr[i])
+       return res;
+   }
+
+   //get every element of the array except for the last one.
+   methods.initial=function(arr=[]){
+       if(!Array.isArray(arr))
+       return;
+
+       var result=[];
+       if(!arr.length || arr.length==1)
+       return result;
+
+       for(let i=0;i<arr.length-1;i++)
+        result.push(arr[i])
+       return result;
+   }
+
+   //Takes the array and converts into a string with a separator.
+   methods.join=function(arr=[],sep=" "){
+    if(!Array.isArray(arr) || typeof(sep)!=='string')
+    return;
+    var str="";
+    for(let i=0,length=arr.length;i<length-1;i++)
+      str+=arr[i]+sep;
+  
+    return str+arr[arr.length-1];
+   }
 
 
     return methods;
