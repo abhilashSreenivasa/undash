@@ -351,6 +351,15 @@ var _=(function(){
        }
    }
 
+   //Limit the function call to only once.
+   methods.once=function(func=()=>{},...args){
+       let times=0;
+       return function(){
+           if(++times==1)
+           return func.apply(null,...args)
+       }
+   }
+
    //Capitalize the first letter of the String.
    methods.capitalize=function(str){
        if(typeof(str)!=='string')
@@ -469,6 +478,21 @@ var _=(function(){
       str+=arr[i]+sep;
   
     return str+arr[arr.length-1];
+   }
+
+   //return true if number is prime
+   methods.isPrime=function(num){
+       if(!_.isNum(num))
+       return false;
+       if(num<=1)
+       return false;
+       if(num===2)
+       return true;
+       for(var i=2;i<num;i++){
+           if(num%i===0)
+           return false;
+       }
+       return true;
    }
 
 
