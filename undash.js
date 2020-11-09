@@ -481,7 +481,7 @@ var _=(function(){
    }
 
    //return true if number is prime
-   methods.isPrime=function(num){
+   methods.isPrime=function(num=0){
        if(!_.isNum(num))
        return false;
        if(num<=1)
@@ -493,6 +493,23 @@ var _=(function(){
            return false;
        }
        return true;
+   }
+
+   //return hcf of two Integers
+   methods.calcGCD=function(num1=0,num2=0){
+       if(!_.isNum(num1) || !_.isNum(num2))
+        return -1;
+       if(num1%num2===0 || num2%num1===0)
+        return (num1<=num2)?num1:num2;
+        
+        var gcd=1;
+        var small=(num1<=num2)?num1:num2;
+        var half=(small/2)+1;
+        for(var i=2;i<=half;i++){
+            if(num1%i===0 && num2%i===0)
+            gcd=i;
+        }
+        return gcd;
    }
 
 
