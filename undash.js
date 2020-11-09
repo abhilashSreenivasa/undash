@@ -495,13 +495,13 @@ var _=(function(){
        return true;
    }
 
-   //return hcf of two Integers
+   //return GCD of two Integers
    methods.calcGCD=function(num1=0,num2=0){
        if(!_.isNum(num1) || !_.isNum(num2))
         return -1;
        if(num1%num2===0 || num2%num1===0)
         return (num1<=num2)?num1:num2;
-        
+
         var gcd=1;
         var small=(num1<=num2)?num1:num2;
         var half=(small/2)+1;
@@ -511,6 +511,23 @@ var _=(function(){
         }
         return gcd;
    }
+
+   //return LCM of two numbers.
+   methods.calcLCM=function(num1=0,num2=0){
+    if(!_.isNum(num1) || !_.isNum(num2))
+     return -1;
+    if(num1%num2===0 || num2%num1===0)
+     return (num1<=num2)?num2:num1;
+
+     var lcm=1;
+     var big=(num1<=num2)?num2:num1;
+     var end=num1*num2;
+     for(var i=big+1;i<=end;i++){
+         if(i%num1===0 && i%num2===0)
+         lcm=i;
+     }
+     return lcm;
+}
 
 
     return methods;
