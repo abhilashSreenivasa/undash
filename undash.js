@@ -529,6 +529,22 @@ var _=(function(){
      return lcm;
 }
 
+//return an array containing all the positive divisors.
+methods.divisors=function(num=1){
+    var arr=[];
+    if(num==0)
+    return arr;
+    if(num<0)
+    num=num*-1;
+    var half=num/2+1;
+    for(var i=1;i<=half;i++){
+        if(num%i==0)
+        arr.push(i);
+    }
+    arr.push(num);
+    return arr;
+}
+
 
     return methods;
     })()
