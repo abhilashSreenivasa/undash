@@ -529,7 +529,7 @@ var _=(function(){
      return lcm;
 }
 
-//return an array containing all the positive divisors.
+//return an array containing all the positive divisors of a number.
 methods.divisors=function(num=1){
     var arr=[];
     if(num==0)
@@ -543,6 +543,18 @@ methods.divisors=function(num=1){
     }
     arr.push(num);
     return arr;
+}
+
+methods.isRightTriangle=function(s1=1,s2=1,s3=1){
+ 
+    if(s1*s1===s2*s2+s3*s3)
+    return true;
+    else if(s2*s2===s1*s1+s3*s3)
+    return true;
+    else if(s3*s3===s2*s2+s1*s1)
+    return true;
+    else
+    return false;
 }
 
 
