@@ -546,7 +546,7 @@ methods.divisors=function(num=1){
 }
 
 methods.isRightTriangle=function(s1=1,s2=1,s3=1){
- 
+    
     if(s1*s1===s2*s2+s3*s3)
     return true;
     else if(s2*s2===s1*s1+s3*s3)
@@ -556,6 +556,15 @@ methods.isRightTriangle=function(s1=1,s2=1,s3=1){
     else
     return false;
 }
+
+//Return area of a triangle on given sides.
+methods.areaTriangle=function(b=1,h=1){
+  if(b<=0 || h<=0)
+  return;
+  return 0.5* b*h;
+}
+
+
 
 
     return methods;
