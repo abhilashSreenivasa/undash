@@ -564,7 +564,28 @@ methods.areaTriangle=function(b=1,h=1){
   return 0.5* b*h;
 }
 
+//Return true if all the elements of the array is a number.
+methods.isNumArray=function(arr=[]){
+    for(let i=0;i<arr.length;i++){
+        if(!_.isNum(arr[i]))
+        return false;
+    }
+    return true;
+}
 
+//Return mean of all the numbers in the array. 
+//If the datatype other than a number is present in the array, return 0.
+
+methods.findMean=function(arr=[]){
+    if(!arr.length || !_.isNumArray(arr))
+    return 0;
+    let total=0;
+
+    for(let i=0;i<arr.length;i++){
+        total+=arr[i];
+    }
+    return total/arr.length;
+}
 
 
     return methods;
