@@ -587,6 +587,43 @@ methods.findMean=function(arr=[]){
     return total/arr.length;
 }
 
+//Return median of the array.
+methods.findMedian=function(arr=[]){
+    if(!arr.length || !_.isNumArray(arr))
+    return null;
+    arr.sort();
+    let i=0,j=arr.length-1;
+    for(i=0;i<arr.length;i++){
+        if(i==j || i+1==j)
+        break;
+        --j;
+    }
+    return arr[i];
+}
+
+//Return Mode of a set of numbers in an array.
+methods.findMode=function(arr=[]){
+    if(!arr.length || !_.isNumArray(arr))
+    return null;
+    if(arr.length==1)
+    return arr[0];
+    arr.sort();
+    let mode=arr[0];
+    let count=0,temp=0;
+    for(let i=0;i<arr.length-1;i++){
+        if(arr[i]===arr[i+1])
+        {
+            ++temp;
+            if(temp>count){
+            count=temp;
+            mode=arr[i];
+            }
+        }
+        else
+        temp=0;
+    }
+    return mode;
+}
 
     return methods;
     })()
