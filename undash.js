@@ -625,6 +625,32 @@ methods.findMode=function(arr=[]){
     return mode;
 }
 
+//Reverse a String.
+methods.reverseString=function(str){
+    if(!str.length || !_.objectType(str)==="string")
+    return;
+    return str.split('').reverse().join('');
+}
+
+//Return a binary String of a positive Integer.MSB represents sign of the integer.
+methods.binaryString=function(num=1){
+   
+    if(num===0 || !_.isNum(num))
+        return 0;
+    let sign=(num>0)? 1:0;
+    if(num<0)
+        num=Math.abs(num);
+    let bin="";
+    while(num>=1){
+        bin+=(num%2);
+        num/=2;
+        num=Math.floor(num)
+    }
+    bin+=(sign)? 1:0;
+    return _.reverseString(bin);
+}
+
+
     return methods;
     })()
 
