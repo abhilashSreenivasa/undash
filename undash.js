@@ -650,6 +650,31 @@ methods.binaryString=function(num=1){
     return _.reverseString(bin);
 }
 
+//Helper-Check if the given string is a binary string.
+methods.isBinary=function(str=""){
+    for(let i=0;i<str.length;i++){
+        if(str.charAt(i)==='0' || str.charAt(i)==='1')
+        continue;
+        return false;
+    }
+    return true;
+}
+
+//Convert Binary String to Integer.
+methods.toDecimal=function(str){
+    if(!_.objectType(str)==="string")
+   return null;
+   if( str.length<=1 || !_.isBinary(str) )
+   return null;
+   str=_.reverseString(str);
+   let dec=0;
+   for(let i=0;i<str.length-1;i++){
+       if(str.charAt(i)=='1')
+       dec+=Math.pow(2,i);
+   }
+   dec*=(str.charAt(str.length-1)==='1')? 1 : -1;
+   return dec;
+}
 
     return methods;
     })()
