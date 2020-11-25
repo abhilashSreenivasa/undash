@@ -545,6 +545,7 @@ methods.divisors=function(num=1){
     return arr;
 }
 
+//Tell if 3 sides can form a right angle triangle.
 methods.isRightTriangle=function(s1=1,s2=1,s3=1){
     
     if(s1*s1===s2*s2+s3*s3)
@@ -564,7 +565,7 @@ methods.areaTriangle=function(b=1,h=1){
   return 0.5* b*h;
 }
 
-//Return true if all the elements of the array is a number.
+//Return true if all the elements of the array are numbers.
 methods.isNumArray=function(arr=[]){
     for(let i=0;i<arr.length;i++){
         if(!_.isNum(arr[i]))
@@ -680,21 +681,35 @@ methods.toDecimal=function(str){
 methods.standardDeviation=function(arr=[]){
     if(arr.length<=1 || !_.isNumArray(arr))
     return;
-    
     let mean=_.findMean(arr);
-    console.log(mean)
     let total=0;
-    for(let i=0;i<arr.length;i++){
+    for(let i=0;i<arr.length;i++)
         total+=Math.pow((mean-arr[i]),2);
-    }
-    return Math.sqrt(total/arr.length);
+    return Math.sqrt(total/arr.length)
 }
 
+//is leap year?
+methods.isLeapYear=function(year=0){
+    if(year<0 || year>99999999 || !_.isNum(year))
+    return null;
+    return (year%400==0 || (year%4==0 && year%100!=0))
+}
+
+//When is the next leap year?
+methods.nextLeapYear=function(){
+  let currentYear=new Date().getFullYear()
+    let flag=0;
+    currentYear+=1;
+    while(flag==0){
+        if(_.isLeapYear(currentYear))
+        flag=1;
+        else
+        currentYear+=1;
+    }
+    return currentYear;
+}
     return methods;
     })()
 
-    
-
    exports._=_;
 
-    
