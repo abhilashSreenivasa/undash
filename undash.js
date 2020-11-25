@@ -660,7 +660,7 @@ methods.isBinary=function(str=""){
     return true;
 }
 
-//Convert Binary String to Integer.
+//Convert Binary String to Integer.MSB should represent the sign.
 methods.toDecimal=function(str){
     if(!_.objectType(str)==="string")
    return null;
@@ -674,6 +674,20 @@ methods.toDecimal=function(str){
    }
    dec*=(str.charAt(str.length-1)==='1')? 1 : -1;
    return dec;
+}
+
+//Find Standard Deviation of set of numbers.
+methods.standardDeviation=function(arr=[]){
+    if(arr.length<=1 || !_.isNumArray(arr))
+    return;
+    
+    let mean=_.findMean(arr);
+    console.log(mean)
+    let total=0;
+    for(let i=0;i<arr.length;i++){
+        total+=Math.pow((mean-arr[i]),2);
+    }
+    return Math.sqrt(total/arr.length);
 }
 
     return methods;
