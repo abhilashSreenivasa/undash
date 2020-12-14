@@ -711,17 +711,15 @@ methods.nextLeapYear=function(){
 
 // return the number of occurance of a digit in a number.
 methods.totalOccurence=function(num,digit){
-    if(num==null || !_.isNum(num) || !_.isNum(digit))
+    if(num==null || !_.isNum(num) || !_.isNum(digit) || num.length>9 || digit.length>1)
     return;
-    let count=0;
-    while(num>1)
-    {
-        if(num%10===digit)++count;
-        num/=10;
-        num=Math.floor(num)
-        console.log(num)
-    }
-    return count;
+    
+    var arr=num.toString().split('')
+    var filteredArr=arr.filter((num)=>{
+        return num===digit.toString();
+    })
+   console.log(arr)
+    return filteredArr.length;
 }
 
     return methods;
