@@ -688,7 +688,7 @@ methods.standardDeviation=function(arr=[]){
     return Math.sqrt(total/arr.length)
 }
 
-//is leap year?
+//Is leap year?
 methods.isLeapYear=function(year=0){
     if(year<0 || year>99999999 || !_.isNum(year))
     return null;
@@ -708,6 +708,22 @@ methods.nextLeapYear=function(){
     }
     return currentYear;
 }
+
+// return the number of occurance of a digit in a number.
+methods.totalOccurence=function(num,digit){
+    if(num==null || !_.isNum(num) || !_.isNum(digit))
+    return;
+    let count=0;
+    while(num>1)
+    {
+        if(num%10===digit)++count;
+        num/=10;
+        num=Math.floor(num)
+        console.log(num)
+    }
+    return count;
+}
+
     return methods;
     })()
 
