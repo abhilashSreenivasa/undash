@@ -718,10 +718,18 @@ methods.totalOccurence=function(num,digit){
     var filteredArr=arr.filter((num)=>{
         return num===digit.toString();
     })
-   console.log(arr)
     return filteredArr.length;
 }
 
+//Checks the sign of a number. 1-positive,-1-negative,0-zero.
+methods.checkSign=function(num){
+    if(!_.isNum(num))
+    return null;
+    if(num===0)
+    return 0;
+    else
+    return (num>0)? 1: -1;
+}
     return methods;
     })()
 
