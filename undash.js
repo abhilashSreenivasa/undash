@@ -721,6 +721,18 @@ methods.totalOccurence=function(num,digit){
     return filteredArr.length;
 }
 
+// returns the number of occurance of specific string in an array
+
+methods.totalStringOccurence=function(arr=[],myString){
+    if(myString.isString == false || arr.length === 0)
+    return null;
+
+    var filteredArr=arr.filter((s)=>{
+        return s===myString;
+    })
+    return filteredArr.length;
+}
+
 //Checks the sign of a number. 1-positive,-1-negative,0-zero.
 methods.checkSign=function(num){
     if(!_.isNum(num))
