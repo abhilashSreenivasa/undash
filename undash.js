@@ -48,23 +48,23 @@ var _=(function(){
     //returns all the values of an object in the form of an Array
     methods.getValues=function(obj){
         if(obj==null)
-        return;
+            return;
         const length=_.getKeys(obj).length;
         if(!length)
-        return [];
+            return [];
          var _keys = _.getKeys(obj);
          var values=[];
          for(let i=0;i<length;i++)
-         values[i]=obj[_keys[i]]
+            values[i]=obj[_keys[i]]
          return values;
     }
 
     //Check if an object,String,Array is empty.
     methods.isEmpty=function(obj){
         if(obj==null)
-        return true;
+            return true;
         if(typeof(obj)==="string")
-        return obj.length===0;
+            return obj.length===0;
         return _.getKeys(obj).length===0;
     }
     
@@ -83,7 +83,7 @@ var _=(function(){
         var _keys=_.getKeys(attr);
         for(let i=0;i<_keys.length;i++){
             if(obj.hasOwnProperty(_keys[i])) //Only takes object's properties and not it's prototype.
-            continue;
+                continue;
             return false;
         }
         return true;
@@ -104,10 +104,10 @@ var _=(function(){
         var _values=_.getValues(obj);
         var result={};
         if(!_keys.length)
-        return obj;
+            return obj;
         for(let i=0;i<_keys.length;i++){
             if(typeof(_values[i])==='function')
-            continue;
+                continue;
             if(typeof(_values[i])==='object')
             {
                 var StringifyObj=JSON.stringify(_values[i]);
@@ -122,7 +122,7 @@ var _=(function(){
     //Find a random number between Min and Max.
     methods.random=function(min=0,max){
         if(max==null || max<min){
-        max=min;
+            max=min;
         }
        return min+Math.floor(Math.random()*(max-min));
     }
@@ -136,11 +136,11 @@ var _=(function(){
     //takes an array and converts it into an array with unique values
     methods.uniq=function(arr){
         if(!Array.isArray(arr) || arr.length==0)
-        return [];
+            return [];
         var result=[];
         for(let i=0;i<arr.length;i++){
             if(result.indexOf(arr[i])>=0)
-            continue;
+                continue;
             result.push(arr[i])
         }
         return result;
@@ -152,9 +152,9 @@ var _=(function(){
 
     methods.extend=function(obj1=null,obj2=null,override=false){
         if(obj2===null)
-        return obj1;
+            return obj1;
         if(obj1===null)
-        return obj2;
+            return obj2;
         var _keys=_.getKeys(obj2);
         var _values=_.getValues(obj2);
         if(override){
@@ -165,7 +165,7 @@ var _=(function(){
         else{
             for(var i=0;i<_keys.length;i++){
                 if(!obj1.hasOwnProperty(_keys[i]))
-                obj1[_keys[i]]=_values[i];
+                    obj1[_keys[i]]=_values[i];
             }
 
         }
@@ -188,7 +188,7 @@ var _=(function(){
         var arr=[];
         for(var i=0,length=_keys.length;i<length;i++){
             if(typeof(obj[_keys[i]])==='function')
-            arr.push(_keys[i])
+                arr.push(_keys[i])
         }
         return arr;
      }
@@ -197,11 +197,11 @@ var _=(function(){
     // return -1 if the argument is invalid.(non-array,null,undefined)
     methods.howMany=function(arr,ele){
         if(!Array.isArray(arr))
-        return -1;
+            return -1;
         let count=0;
         for(let i in arr){
         if(arr[i]===ele)
-        ++count;
+            ++count;
         }
         return count;
     }
@@ -209,7 +209,7 @@ var _=(function(){
     //Filter out all negative values in an array.
     methods.bePositive=function(arr){
         if(!Array.isArray(arr))
-        return -1;
+            return -1;
         var a=[]
         for(let i=0,length=arr.length;i<length;i++)
         {
@@ -223,7 +223,7 @@ var _=(function(){
     methods.without=function(arr=[],...values){
        var a=[],res=[]
        if(!Array.isArray(arr) || arr===null || arr===undefined)
-       return a;
+          return a;
        a=values;
        for(let i=0;i<arr.length;i++){
          if(a.indexOf(arr[i])>=0)
@@ -236,7 +236,7 @@ var _=(function(){
    methods.intersection=function(arr=[],...values){
     var a=[],res=[]
     if(!Array.isArray(arr) || arr===null || arr===undefined)
-    return a;
+        return a;
     a=values;
     for(let i=0;i<arr.length;i++){
       if(a.indexOf(arr[i])>=0)
@@ -248,7 +248,7 @@ var _=(function(){
   //Call a method n times.
   methods.times=function(func,times=1,args){
       if(func===null || func===undefined || typeof(func)!=='function')
-      return -1;
+        return -1;
       var arr=[];
      for(var i=0;i<times;i++){
          arr.push(func.apply(null,args));
@@ -259,12 +259,12 @@ var _=(function(){
    //Search based on a particular key
    methods.linearSearch=function(arr,val){
        if(val===null || val===undefined || typeof(val)!='number')
-       return -1;
+            return -1;
        var _keys=_.getKeys(arr)
        
        for(var i=0,length=0;i<arr.length;i++){
             if(arr[_keys[i]]===val)
-            return _keys[i];
+                return _keys[i];
        }
        return -1;
    }
@@ -280,9 +280,9 @@ var _=(function(){
         while(min<=max){
             mid=Math.floor(min+(max-min)/2);
             if(val==arr[mid])
-            return mid;
+                return mid;
             else if(val<arr[mid])
-            max=mid-1;
+                max=mid-1;
             else
             min=mid+1;
         }
@@ -295,7 +295,7 @@ var _=(function(){
        var _res=[];
        for(var i=0;i<_arr.length;i++){
           if(_arr[i].hasOwnProperty(model))
-          _res.push(_arr[i][model])
+            _res.push(_arr[i][model])
        }
        return _res;
    }
@@ -306,7 +306,7 @@ var _=(function(){
            var jsonObj=JSON.parse(obj)
            console.log(jsonObj)
            if(!jsonObj || !typeof(jsonObj)==='object')
-           return false;
+                return false;
        }
        catch(e){
            return false;
@@ -317,7 +317,7 @@ var _=(function(){
    //Check if the property belongs to the prototype of the object.
    methods.isProtoProp=function(obj,key){
        if(obj===undefined || obj===null || key===undefined || typeof(obj)!='object')
-       return false;
+            return false;
        if(obj[key]){
         if(obj.hasOwnProperty(key))
             return false;
@@ -329,17 +329,17 @@ var _=(function(){
    //get a random value in the array.
    methods.randomArr=function(arr){
        if(!Array.isArray(arr) || !arr.length){
-        return;
+            return;
        }
        const index=_.random(0,arr.length-1)
-       return arr[index];
+            return arr[index];
    }
 
    //Call the function only after certain number of calls.
    methods.after=function(times=0,func=()=>{},...args){
        return function(){
            if(--times<0)
-           return func.apply(null,...args)
+                return func.apply(null,...args)
        }
    }
 
@@ -347,7 +347,7 @@ var _=(function(){
    methods.before=function(times=0,func=()=>{},...args){
        return function(){
            if(--times>=0)
-           return func.apply(null,...args)
+                return func.apply(null,...args)
        }
    }
 
@@ -356,23 +356,23 @@ var _=(function(){
        let times=0;
        return function(){
            if(++times==1)
-           return func.apply(null,...args)
+                return func.apply(null,...args)
        }
    }
 
    //Capitalize the first letter of the String.
    methods.capitalize=function(str){
        if(typeof(str)!=='string')
-       return str;
+            return str;
        return str.charAt(0).toUpperCase()+str.substring(1);
    }
 
    //Split the string in line breaks and return a list.
    methods.splitLines=function(str){
         if(typeof(str)!=='string')
-         return;
+            return;
         var arr=str.split("\n")
-        return arr;
+            return arr;
    }
 
    //Capitalize Every first word of the sentence and trim spaces.
@@ -391,14 +391,14 @@ var _=(function(){
    //Check if the string is a palindrome.
    methods.isPalindrome=function(str){
     if(typeof(str)!=='string')
-    return;
+        return;
     let j=str.length;
     for(let i=0;i<str.length;i++){
         --j;
         if(i>j)
         break;
         if(str[i]===str[j])
-         continue;
+            continue;
         return false;
     }
     return true;
@@ -412,7 +412,7 @@ var _=(function(){
    //Difference between the first and the second array.
    methods.difference=function(arr1,arr2){
        if(!Array.isArray(arr1) || !Array.isArray(arr2))
-       return;
+        return;
        var arr=[];
        for(let i=0,length=arr1.length;i<length;i++){
            if(!arr2.includes(arr1[i]))
@@ -424,11 +424,11 @@ var _=(function(){
    //delete a key with a certain value.
    methods.deleteKey=function(obj,val){
        if(!_.isObject(obj))
-       return;
+        return;
        var _keys=_.getKeys(obj);
        for(let i=0,length=_keys.length;i<length;i++){
            if(obj[_keys[i]]===val)
-            delete obj[_keys[i]]
+             delete obj[_keys[i]]
        }
        return obj;
    }
@@ -436,20 +436,19 @@ var _=(function(){
    //Slice the first n elements of the array.
    methods.drop=function(arr=[],num=0){
        if(!Array.isArray(arr) || !_.isNum(num))
-       return;
+            return;
 
        var res=[];
        if(num>=0){
            if(num>arr.length)
-           return res;
+                return res;
            for(let i=num;i<arr.length;i++)
                 res.push(arr[i])
            return res;
        }
 
        if(Math.abs(num)>arr.length)
-       return res;
-
+        return res;
        for(let i=0;i<arr.length+num;i++)
          res.push(arr[i])
        return res;
@@ -462,8 +461,7 @@ var _=(function(){
 
        var result=[];
        if(!arr.length || arr.length==1)
-       return result;
-
+        return result;
        for(let i=0;i<arr.length-1;i++)
         result.push(arr[i])
        return result;
@@ -472,25 +470,24 @@ var _=(function(){
    //Takes the array and converts into a string with a separator.
    methods.join=function(arr=[],sep=" "){
     if(!Array.isArray(arr) || typeof(sep)!=='string')
-    return;
+      return;
     var str="";
     for(let i=0,length=arr.length;i<length-1;i++)
       str+=arr[i]+sep;
-  
     return str+arr[arr.length-1];
    }
 
    //return true if number is prime
    methods.isPrime=function(num=0){
        if(!_.isNum(num))
-       return false;
+        return false;
        if(num<=1)
-       return false;
+        return false;
        if(num===2)
-       return true;
+        return true;
        for(var i=2;i<num;i++){
            if(num%i===0)
-           return false;
+             return false;
        }
        return true;
    }
@@ -547,21 +544,23 @@ methods.divisors=function(num=1){
 
 //Tell if 3 sides can form a right angle triangle.
 methods.isRightTriangle=function(s1=1,s2=1,s3=1){
+    if(!_.isNum(s1) || !_.isNum(s2)) || !_.isNum(s3))
+     return;
     
     if(s1*s1===s2*s2+s3*s3)
-    return true;
+       return true;
     else if(s2*s2===s1*s1+s3*s3)
-    return true;
+       return true;
     else if(s3*s3===s2*s2+s1*s1)
-    return true;
+       return true;
     else
-    return false;
+        return false;
 }
 
 //Return area of a triangle on given sides.
 methods.areaTriangle=function(b=1,h=1){
   if(b<=0 || h<=0)
-  return;
+    return;
   return 0.5* b*h;
 }
 
@@ -569,7 +568,7 @@ methods.areaTriangle=function(b=1,h=1){
 methods.isNumArray=function(arr=[]){
     for(let i=0;i<arr.length;i++){
         if(!_.isNum(arr[i]))
-        return false;
+           return false;
     }
     return true;
 }
@@ -579,7 +578,7 @@ methods.isNumArray=function(arr=[]){
 
 methods.findMean=function(arr=[]){
     if(!arr.length || !_.isNumArray(arr))
-    return 0;
+        return 0;
     let total=0;
 
     for(let i=0;i<arr.length;i++){
@@ -591,12 +590,12 @@ methods.findMean=function(arr=[]){
 //Return median of the array.
 methods.findMedian=function(arr=[]){
     if(!arr.length || !_.isNumArray(arr))
-    return null;
+        return null;
     arr.sort();
     let i=0,j=arr.length-1;
     for(i=0;i<arr.length;i++){
         if(i==j || i+1==j)
-        break;
+            break;
         --j;
     }
     return arr[i];
@@ -605,9 +604,9 @@ methods.findMedian=function(arr=[]){
 //Return Mode of a set of numbers in an array.
 methods.findMode=function(arr=[]){
     if(!arr.length || !_.isNumArray(arr))
-    return null;
+        return null;
     if(arr.length==1)
-    return arr[0];
+        return arr[0];
     arr.sort();
     let mode=arr[0];
     let count=0,temp=0;
@@ -629,7 +628,7 @@ methods.findMode=function(arr=[]){
 //Reverse a String.
 methods.reverseString=function(str){
     if(!str.length || !_.objectType(str)==="string")
-    return;
+        return;
     return str.split('').reverse().join('');
 }
 
@@ -655,7 +654,7 @@ methods.binaryString=function(num=1){
 methods.isBinary=function(str=""){
     for(let i=0;i<str.length;i++){
         if(str.charAt(i)==='0' || str.charAt(i)==='1')
-        continue;
+            continue;
         return false;
     }
     return true;
@@ -663,15 +662,15 @@ methods.isBinary=function(str=""){
 
 //Convert Binary String to Integer.MSB should represent the sign.
 methods.toDecimal=function(str){
-    if(!_.objectType(str)==="string")
-   return null;
+   if(!_.objectType(str)==="string")
+        return null;
    if( str.length<=1 || !_.isBinary(str) )
-   return null;
+        return null;
    str=_.reverseString(str);
    let dec=0;
    for(let i=0;i<str.length-1;i++){
        if(str.charAt(i)=='1')
-       dec+=Math.pow(2,i);
+        dec+=Math.pow(2,i);
    }
    dec*=(str.charAt(str.length-1)==='1')? 1 : -1;
    return dec;
@@ -680,7 +679,7 @@ methods.toDecimal=function(str){
 //Find Standard Deviation of set of numbers.
 methods.standardDeviation=function(arr=[]){
     if(arr.length<=1 || !_.isNumArray(arr))
-    return;
+        return;
     let mean=_.findMean(arr);
     let total=0;
     for(let i=0;i<arr.length;i++)
@@ -691,7 +690,7 @@ methods.standardDeviation=function(arr=[]){
 //Is leap year?
 methods.isLeapYear=function(year=0){
     if(year<0 || year>99999999 || !_.isNum(year))
-    return null;
+        return null;
     return (year%400==0 || (year%4==0 && year%100!=0))
 }
 
@@ -712,7 +711,7 @@ methods.nextLeapYear=function(){
 // return the number of occurance of a digit in a number.
 methods.totalOccurence=function(num,digit){
     if(num==null || !_.isNum(num) || !_.isNum(digit) || num.length>9 || digit.length>1)
-    return;
+        return;
     
     var arr=num.toString().split('')
     var filteredArr=arr.filter((num)=>{
@@ -725,7 +724,7 @@ methods.totalOccurence=function(num,digit){
 
 methods.totalStringOccurence=function(arr=[],myString){
     if(myString.isString == false || arr.length === 0)
-    return null;
+        return null;
 
     var filteredArr=arr.filter((s)=>{
         return s===myString;
@@ -736,11 +735,11 @@ methods.totalStringOccurence=function(arr=[],myString){
 //Checks the sign of a number. 1-positive,-1-negative,0-zero.
 methods.checkSign=function(num){
     if(!_.isNum(num))
-    return null;
+        return null;
     if(num===0)
-    return 0;
+        return 0;
     else
-    return (num>0)? 1: -1;
+        return (num>0)? 1: -1;
 }
     return methods;
     })()
