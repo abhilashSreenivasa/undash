@@ -1,6 +1,6 @@
-var _=(function(){
+const _=(function(){
 
-    var methods={}
+    let methods={}
     
     //returns the type of object.
     methods.objectType=function(obj){
@@ -9,7 +9,7 @@ var _=(function(){
 
     //tells if it is an object.
     methods.isObject=function(obj){
-        var type=typeof obj;
+        const type=typeof obj;
         return type==='function' || type==='object';
     }
     
@@ -37,7 +37,7 @@ var _=(function(){
     methods.getKeys=function(obj){
          if(!_.isObject(obj)) return [];
          let keys=[]
-         for (var key in obj) {
+         for (let key in obj) {
             if (!obj.hasOwnProperty(key))
                 continue
             keys.push(key)
@@ -52,8 +52,8 @@ var _=(function(){
         const length=_.getKeys(obj).length;
         if(!length)
             return [];
-         var _keys = _.getKeys(obj);
-         var values=[];
+         const _keys = _.getKeys(obj);
+         let values=[];
          for(let i=0;i<length;i++)
             values[i]=obj[_keys[i]]
          return values;
@@ -80,7 +80,7 @@ var _=(function(){
 
      //check if the object contains the properties
      methods.containsAttr=function(obj={},attr=[]){
-        var _keys=_.getKeys(attr);
+        const _keys=_.getKeys(attr);
         for(let i=0;i<_keys.length;i++){
             if(obj.hasOwnProperty(_keys[i])) //Only takes object's properties and not it's prototype.
                 continue;
@@ -100,9 +100,9 @@ var _=(function(){
     
     //Reverse Key and values;
     methods.reverseObject=function(obj){
-        var _keys=_.getKeys(obj);
-        var _values=_.getValues(obj);
-        var result={};
+        const _keys=_.getKeys(obj);
+        const _values=_.getValues(obj);
+        let result={};
         if(!_keys.length)
             return obj;
         for(let i=0;i<_keys.length;i++){
@@ -110,7 +110,7 @@ var _=(function(){
                 continue;
             if(typeof(_values[i])==='object')
             {
-                var StringifyObj=JSON.stringify(_values[i]);
+                let StringifyObj=JSON.stringify(_values[i]);
                 result[StringifyObj]=_keys[i]
                 continue;
             }
@@ -129,7 +129,7 @@ var _=(function(){
 
     //Determines if an object or an array contains an element.
     methods.contains=function(obj,val){
-        var _values=_.getValues(obj)
+        const _values=_.getValues(obj)
         return _values.indexOf(val)>=0;
     }
 
@@ -137,7 +137,7 @@ var _=(function(){
     methods.uniq=function(arr){
         if(!Array.isArray(arr) || arr.length==0)
             return [];
-        var result=[];
+        let result=[];
         for(let i=0;i<arr.length;i++){
             if(result.indexOf(arr[i])>=0)
                 continue;
@@ -155,15 +155,15 @@ var _=(function(){
             return obj1;
         if(obj1===null)
             return obj2;
-        var _keys=_.getKeys(obj2);
-        var _values=_.getValues(obj2);
+        const _keys=_.getKeys(obj2);
+        const _values=_.getValues(obj2);
         if(override){
-            for(var i=0;i<_keys.length;i++){
+            for(let i=0;i<_keys.length;i++){
                 obj1[_keys[i]]=_values[i];
             }
         }
         else{
-            for(var i=0;i<_keys.length;i++){
+            for(let i=0;i<_keys.length;i++){
                 if(!obj1.hasOwnProperty(_keys[i]))
                     obj1[_keys[i]]=_values[i];
             }
@@ -174,9 +174,9 @@ var _=(function(){
      
     //Converts an object into a list of keys and values.
     methods.pairs=function(obj){
-        var _keys=_.getKeys(obj);
-        var arr=[];
-        for(var i=0,length=_keys.length;i<length;i++){
+        const _keys=_.getKeys(obj);
+        let arr=[];
+        for(let i=0,length=_keys.length;i<length;i++){
             arr.push('['+_keys[i]+','+obj[_keys[i]]+']')
         }
         return arr;
@@ -184,9 +184,9 @@ var _=(function(){
 
      // Return a sorted list of the function names available on the object.
      methods.functions=function(obj){
-        var _keys=_.getKeys(obj)
-        var arr=[];
-        for(var i=0,length=_keys.length;i<length;i++){
+        const _keys=_.getKeys(obj)
+        let arr=[];
+        for(let i=0,length=_keys.length;i<length;i++){
             if(typeof(obj[_keys[i]])==='function')
                 arr.push(_keys[i])
         }
@@ -544,7 +544,7 @@ methods.divisors=function(num=1){
 
 //Tell if 3 sides can form a right angle triangle.
 methods.isRightTriangle=function(s1=1,s2=1,s3=1){
-    if(!_.isNum(s1) || !_.isNum(s2)) || !_.isNum(s3))
+    if(!_.isNum(s1) || !_.isNum(s2) || !_.isNum(s3))
      return;
     
     if(s1*s1===s2*s2+s3*s3)
