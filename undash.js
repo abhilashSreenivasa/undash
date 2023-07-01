@@ -210,7 +210,7 @@ const _=(function(){
     methods.bePositive=function(arr){
         if(!Array.isArray(arr))
             return -1;
-        var a=[]
+        const a=[]
         for(let i=0,length=arr.length;i<length;i++)
         {
             if(_.isNum(arr[i]) && arr[i]>0)
@@ -221,7 +221,7 @@ const _=(function(){
 
     //remove every element that is mentioned.
     methods.without=function(arr=[],...values){
-       var a=[],res=[]
+       let a=[],res=[]
        if(!Array.isArray(arr) || arr===null || arr===undefined)
           return a;
        a=values;
@@ -234,7 +234,7 @@ const _=(function(){
    }
    //returns array with .
    methods.intersection=function(arr=[],...values){
-    var a=[],res=[]
+    let a=[],res=[]
     if(!Array.isArray(arr) || arr===null || arr===undefined)
         return a;
     a=values;
@@ -249,7 +249,7 @@ const _=(function(){
   methods.times=function(func,times=1,args){
       if(func===null || func===undefined || typeof(func)!=='function')
         return -1;
-      var arr=[];
+      let arr=[];
      for(var i=0;i<times;i++){
          arr.push(func.apply(null,args));
      }
@@ -260,7 +260,7 @@ const _=(function(){
    methods.linearSearch=function(arr,val){
        if(val===null || val===undefined || typeof(val)!='number')
             return -1;
-       var _keys=_.getKeys(arr)
+       let _keys=_.getKeys(arr)
        
        for(var i=0,length=0;i<arr.length;i++){
             if(arr[_keys[i]]===val)
@@ -274,9 +274,9 @@ const _=(function(){
         var _keys=_.getKeys(arr)
         if(val===null || val===undefined || typeof(val)!='number' || !_keys.length)
          return -1;
-        var min=0;
-        var max=arr.length-1;
-        var mid=-1;
+        let min=0;
+        let max=arr.length-1;
+        let mid=-1;
         while(min<=max){
             mid=Math.floor(min+(max-min)/2);
             if(val==arr[mid])
@@ -291,8 +291,8 @@ const _=(function(){
 
    //get values of particular keys.
    methods.pluck=function(obj,model){
-       var _arr=_.getValues(obj)
-       var _res=[];
+       let _arr=_.getValues(obj)
+       let _res=[];
        for(var i=0;i<_arr.length;i++){
           if(_arr[i].hasOwnProperty(model))
             _res.push(_arr[i][model])
@@ -303,7 +303,7 @@ const _=(function(){
    //is it a Json object?.
    methods.isJSON=function(obj){
        try{
-           var jsonObj=JSON.parse(obj)
+           let jsonObj=JSON.parse(obj)
            console.log(jsonObj)
            if(!jsonObj || !typeof(jsonObj)==='object')
                 return false;
