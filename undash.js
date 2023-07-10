@@ -649,7 +649,6 @@ methods.binaryString=function(num=1){
     bin+=(sign)? 1:0;
     return _.reverseString(bin);
 }
-
 //Helper-Check if the given string is a binary string.
 methods.isBinary=function(str=""){
     for(let i=0;i<str.length;i++){
@@ -659,7 +658,6 @@ methods.isBinary=function(str=""){
     }
     return true;
 }
-
 //Convert Binary String to Integer.MSB should represent the sign.
 methods.toDecimal=function(str){
    if(!_.objectType(str)==="string")
@@ -721,7 +719,6 @@ methods.totalOccurence=function(num,digit){
 }
 
 // returns the number of occurance of specific string in an array
-
 methods.totalStringOccurence=function(arr=[],myString){
     if(myString.isString == false || arr.length === 0)
         return null;
