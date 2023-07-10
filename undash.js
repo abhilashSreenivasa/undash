@@ -250,7 +250,7 @@ const _=(function(){
       if(func===null || func===undefined || typeof(func)!=='function')
         return -1;
       let arr=[];
-     for(var i=0;i<times;i++){
+     for(let i=0;i<times;i++){
          arr.push(func.apply(null,args));
      }
      return arr;
@@ -262,7 +262,7 @@ const _=(function(){
             return -1;
        let _keys=_.getKeys(arr)
        
-       for(var i=0,length=0;i<arr.length;i++){
+       for(let i=0,length=0;i<arr.length;i++){
             if(arr[_keys[i]]===val)
                 return _keys[i];
        }
@@ -271,7 +271,7 @@ const _=(function(){
 
    //Binary Search: time complexity:o(logn)
    methods.binarySearch=function(arr,val){
-        var _keys=_.getKeys(arr)
+        let _keys=_.getKeys(arr)
         if(val===null || val===undefined || typeof(val)!='number' || !_keys.length)
          return -1;
         let min=0;
@@ -293,7 +293,7 @@ const _=(function(){
    methods.pluck=function(obj,model){
        let _arr=_.getValues(obj)
        let _res=[];
-       for(var i=0;i<_arr.length;i++){
+       for(let i=0;i<_arr.length;i++){
           if(_arr[i].hasOwnProperty(model))
             _res.push(_arr[i][model])
        }
@@ -371,7 +371,7 @@ const _=(function(){
    methods.splitLines=function(str){
         if(typeof(str)!=='string')
             return;
-        var arr=str.split("\n")
+        let arr=str.split("\n")
             return arr;
    }
 
@@ -413,7 +413,7 @@ const _=(function(){
    methods.difference=function(arr1,arr2){
        if(!Array.isArray(arr1) || !Array.isArray(arr2))
         return;
-       var arr=[];
+       let arr=[];
        for(let i=0,length=arr1.length;i<length;i++){
            if(!arr2.includes(arr1[i]))
             arr.push(arr1[i])
@@ -425,7 +425,7 @@ const _=(function(){
    methods.deleteKey=function(obj,val){
        if(!_.isObject(obj))
         return;
-       var _keys=_.getKeys(obj);
+       let _keys=_.getKeys(obj);
        for(let i=0,length=_keys.length;i<length;i++){
            if(obj[_keys[i]]===val)
              delete obj[_keys[i]]
@@ -438,7 +438,7 @@ const _=(function(){
        if(!Array.isArray(arr) || !_.isNum(num))
             return;
 
-       var res=[];
+        const res=[];
        if(num>=0){
            if(num>arr.length)
                 return res;
@@ -459,7 +459,7 @@ const _=(function(){
        if(!Array.isArray(arr))
        return;
 
-       var result=[];
+       let result=[];
        if(!arr.length || arr.length==1)
         return result;
        for(let i=0;i<arr.length-1;i++)
@@ -471,7 +471,7 @@ const _=(function(){
    methods.join=function(arr=[],sep=" "){
     if(!Array.isArray(arr) || typeof(sep)!=='string')
       return;
-    var str="";
+    let str="";
     for(let i=0,length=arr.length;i<length-1;i++)
       str+=arr[i]+sep;
     return str+arr[arr.length-1];
@@ -485,7 +485,7 @@ const _=(function(){
         return false;
        if(num===2)
         return true;
-       for(var i=2;i<num;i++){
+       for(let i=2;i<num;i++){
            if(num%i===0)
              return false;
        }
@@ -499,10 +499,10 @@ const _=(function(){
        if(num1%num2===0 || num2%num1===0)
         return (num1<=num2)?num1:num2;
 
-        var gcd=1;
-        var small=(num1<=num2)?num1:num2;
-        var half=(small/2)+1;
-        for(var i=2;i<=half;i++){
+        let gcd=1;
+        let small=(num1<=num2)?num1:num2;
+        let half=(small/2)+1;
+        for(let i=2;i<=half;i++){
             if(num1%i===0 && num2%i===0)
             gcd=i;
         }
@@ -516,10 +516,10 @@ const _=(function(){
     if(num1%num2===0 || num2%num1===0)
      return (num1<=num2)?num2:num1;
 
-     var lcm=1;
-     var big=(num1<=num2)?num2:num1;
-     var end=num1*num2;
-     for(var i=big+1;i<=end;i++){
+     let lcm=1;
+     let big=(num1<=num2)?num2:num1;
+     let end=num1*num2;
+     for(let i=big+1;i<=end;i++){
          if(i%num1===0 && i%num2===0)
          lcm=i;
      }
@@ -528,13 +528,13 @@ const _=(function(){
 
 //return an array containing all the positive divisors of a number.
 methods.divisors=function(num=1){
-    var arr=[];
+    const arr=[];
     if(num==0)
-    return arr;
+        return arr;
     if(num<0)
-    num=num*-1;
-    var half=num/2+1;
-    for(var i=1;i<=half;i++){
+        num=num*-1;
+    let half=num/2+1;
+    for(let i=1;i<=half;i++){
         if(num%i==0)
         arr.push(i);
     }
@@ -713,8 +713,8 @@ methods.totalOccurence=function(num,digit){
     if(num==null || !_.isNum(num) || !_.isNum(digit) || num.length>9 || digit.length>1)
         return;
     
-    var arr=num.toString().split('')
-    var filteredArr=arr.filter((num)=>{
+    let arr=num.toString().split('')
+    let filteredArr=arr.filter((num)=>{
         return num===digit.toString();
     })
     return filteredArr.length;
@@ -726,7 +726,7 @@ methods.totalStringOccurence=function(arr=[],myString){
     if(myString.isString == false || arr.length === 0)
         return null;
 
-    var filteredArr=arr.filter((s)=>{
+    let filteredArr=arr.filter((s)=>{
         return s===myString;
     })
     return filteredArr.length;
