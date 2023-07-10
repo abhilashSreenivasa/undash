@@ -658,6 +658,7 @@ methods.isBinary=function(str=""){
     }
     return true;
 }
+
 //Convert Binary String to Integer.MSB should represent the sign.
 methods.toDecimal=function(str){
    if(!_.objectType(str)==="string")
